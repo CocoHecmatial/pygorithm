@@ -561,7 +561,7 @@ class Line2(object):
             l1_min = min(l1_st_y, l1_en_y) if offset1 is not None else line1.min_y
             l1_max = max(l1_st_y, l1_en_y) if offset1 is not None else line1.max_y
             
-            if l2_st_y < l1_min or l2_st_y > l2_max:
+            if l2_st_y < l1_min or l2_st_y > l1_max:
                 return False, False, None
             
             l2_min = min(l2_st_x, l2_en_x) if offset2 is not None else line2.min_x
@@ -586,7 +586,7 @@ class Line2(object):
             
             if math.isclose(line2_y_at_line1_x, l1_min) or math.isclose(line2_y_at_line1_x, l1_max):
                 return True, False, vector2.Vector2(l1_st_x, line2_y_at_line1_x)
-            elif line2_y_at_line1_x < l1_min or line2_y_at_line1_x > l2_max:
+            elif line2_y_at_line1_x < l1_min or line2_y_at_line1_x > l1_max:
                 return False, False, None
             else:
                 return False, True, vector2.Vector2(l1_st_x, line2_y_at_line1_x)
